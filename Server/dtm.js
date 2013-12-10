@@ -17,7 +17,7 @@ exports.start = function() {
 		},
 		lives: function(userId, lives) {
 			/* add quatity lives to userId's lives cound */
-			transaction.push({"type": "lives", "transaction": { "userid": userId, "lives": lives } });
+			transaction.push({"type": "lives", "transaction": { "userid": userId, "quantity": lives } });
 			return this;
 		},
 		item: function(userId, itemId, quantity) {
