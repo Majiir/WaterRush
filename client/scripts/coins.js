@@ -9,10 +9,10 @@ define([ 'knockout', 'modules/communication' ], function(ko, communication) {
 
 		communication.send({
 			'storeInfo': {
-				'getFakeCoinPrices': {}
+				'getCoinPrices': {}
 			}
 		}, function (result) {
-			var list = result.storeInfo.getFakeCoinPrices;
+			var list = result.storeInfo.getCoinPrices;
 			for (entry in list) {
 				self.entries.push(new EntryViewModel(list[entry].quantity, list[entry].price));
 			}
@@ -29,7 +29,7 @@ define([ 'knockout', 'modules/communication' ], function(ko, communication) {
 		this.getCoins = function(){
 			communication.send({
 				'buyCoins': {
-					'buyFakeCoins': self.quantity
+					'buyCoins': self.quantity
 				}
 			}, function (result) {
 			});

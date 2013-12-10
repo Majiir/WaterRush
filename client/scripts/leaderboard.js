@@ -12,16 +12,16 @@ define([ 'knockout', 'modules/communication' ], function(ko, communication) {
 
 		communication.send({
 			'leaderBoard': {
-				'getFakeScores': {},
-				'getFakeFriendScores': {}
+				'getScores': {},
+				'getFriendScores': {}
 			}
 		}, function (result) {
-			var list = result.leaderBoard.getFakeScores;
+			var list = result.leaderBoard.getScores;
 			for (friend in list) {
 				self.globalEntries.push(new EntryViewModel(friend, list[friend]));
 			}
 
-			list = result.leaderBoard.getFakeFriendScores;
+			list = result.leaderBoard.getFriendScores;
 			for (friend in list) {
 				self.friendEntries.push(new EntryViewModel(friend, list[friend]));
 			}

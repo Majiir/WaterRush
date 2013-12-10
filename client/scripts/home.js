@@ -11,16 +11,16 @@ define([ 'knockout', 'modules/communication' ], function(ko, communication) {
 
 		communication.send({
 			'inventory': {
-				'getFakeCoins': {},
-				'getFakeLives': {}
+				'getCoins': {},
+				'getLives': {}
 			},
 			'notifications': {
-				'getFakeNotifications': {}
+				'getNotifications': {}
 			}
 		}, function (result) {
-			self.coins(result.inventory.getFakeCoins);
-			self.lives(result.inventory.getFakeLives);
-			self.notifications(result.notifications.getFakeNotifications.length);
+			self.coins(result.inventory.getCoins);
+			self.lives(result.inventory.getLives);
+			self.notifications(result.notifications.getNotifications.length);
 		});
 	
 	}

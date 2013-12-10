@@ -9,10 +9,10 @@ define([ 'knockout', 'modules/communication' ], function(ko, communication) {
 
 		communication.send({
 			'notifications': {
-				'getFakeNotifications': {}
+				'getNotifications': {}
 			}
 		}, function (result) {
-			var list = result.notifications.getFakeNotifications;
+			var list = result.notifications.getNotifications;
 			for (notify in list) {
 				self.entries.push(new EntryViewModel(list[notify].notification));
 			}

@@ -6,6 +6,6 @@ module.exports = function (req, res, next) {
 	 */
 	req.body = req.body.data;
 
-	req.user = { id: 0 };
+	req.user = { id: 'abrigham' };
 	next();
 };
