@@ -32,9 +32,11 @@ exports.endpoints = {
      * req: the levelId of a level
      */
     'getGlobalHighScore': function (req, user, done) {
-        var allHighScore = drs.getLevelScores(req);
-        allHighScore.sort(compare);
-        done(allHighScore.slice(0, 50));
+        drs.getLevelScores(req, function(err, result) {
+            var allHighScore = result;
+            allHighScore.sort(compare);
+            done(allHighScore.slice(0, 50));
+        });
     },
 
     'getFakeScores': function(req, user, done) {
