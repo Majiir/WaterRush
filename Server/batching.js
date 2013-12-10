@@ -49,7 +49,15 @@ module.exports = function (services) {
 					console.warn('batching: Service endpoint not found: ' + service + '/' + endpoint);
 				}
 
-				var done = function(result) {
+				var done = makeDone(endpoint, service, responses);
+
+				func(reqs[endpoint], req.user, done);
+
+			}
+		}
+
+		function makeDone(endpoint, service, responses) {
+			var done = function(result) {
 
 					if (!result) {
 						console.warn('batching: No result returned from ' + service + '/' + endpoint);
@@ -64,11 +72,7 @@ module.exports = function (services) {
 
 					checkResponses();
 
-				};
-
-				func(reqs[endpoint], req.user, done);
-
-			}
+			};
 		}
 	};
 };
