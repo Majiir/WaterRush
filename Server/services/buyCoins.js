@@ -8,7 +8,7 @@ exports.endpoints = {
 		 * Adds the specified number of coins to the user
 		 * req: the number of coins to be purchased
 		 */
-		dtm.start().coins(user.id, req).commit(done);
+		dtm.start().coins(user.id, parseInt(req)).commit(done);
 	},
 	'buyFakeCoins': function (req, user, done) {
 		/**
