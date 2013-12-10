@@ -57,7 +57,7 @@ exports.endpoints = {
 	dtm.start().levelProgress(userId,levelId,score)
 		       .item(userId,"freeze",freezeQ)
 		       .item(userId,"boom",boomQ)
-		       .item(userId,"reQ",reQ)
+		       .item(userId,"req",reQ)
 		       .lives(userId,lives)
 		       .coins(userId,coins)
 		       .commit(done);
