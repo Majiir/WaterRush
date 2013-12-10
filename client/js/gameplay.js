@@ -28,7 +28,7 @@ $(function() {
 	require([ 'modules/communication_nojquery'], function(communication) {	
 		communication.send({
 			'inventory': {
-				'getFakePowerups': {}
+				'getPowerups': {}
 			}
 		}, function (result) {
 /* {"inventory": {"getFakePowerups": [ 
