@@ -14,14 +14,18 @@ var friends = {
     2346 : "Jake",
 };
 
+function getFriends (req, user, done) {
+    done(friends);
+}
+
+exports.getFriends = getFriends;
+
 exports.endpoints = {
     /**
      * Returns a list of friends.
      * req: the levelId of a level
      */
-    'getFriends': function (req, user, done) {
-        done(friends);
-    },
+    'getFriends': getFriends,
     /**
      * Returns a boolean true if the user and the “friend” are friends. Returns false 
      * if they are not.

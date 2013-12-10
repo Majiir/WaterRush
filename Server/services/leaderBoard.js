@@ -9,6 +9,9 @@ var friendGraph = require('./friendGraph.js');
  */
 var getFriendHighScore = function (req, user, done) {
 
+    friendGraph.getFriends(null, user.id, function(friends) {
+
+    })
     var friends = friendGraph.getFriends(user.id); //assuming the structure of friend works here
 
     /* This creates a in the form of:
