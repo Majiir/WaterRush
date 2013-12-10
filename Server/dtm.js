@@ -40,7 +40,7 @@ exports.start = function() {
 			transaction.push({"type": "receipt", "transaction": { "receipt": notification}});
 			return this;
 		},
-		commit: function() {
+		commit: function(done) {
 			/* attempts to process transaction (returns true/false) */
 
 			var currentCount;
@@ -87,6 +87,8 @@ exports.start = function() {
 						break;
 				}
 			});
+
+			done();
 		},
 	};
 };
