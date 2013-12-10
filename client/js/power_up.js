@@ -32,6 +32,10 @@ function FreezePowerUp(count) {
 		num = newNum;
 		this.display();
 	};
+
+	this.getCount = function () {
+		return num;
+	}
 };
 
 function ReQPowerUp(count) {
@@ -58,6 +62,10 @@ function ReQPowerUp(count) {
 		num = newNum;
 		this.display();
 	};
+
+	this.getCount = function () {
+		return num;
+	}
 
 	this.display();
 };
@@ -94,5 +102,10 @@ function BoomPowerUp(count) {
 		num = newNum;
 		this.display();
 	};
+
+	this.getCount = function () {
+		return num;
+	}
+
 	this.display();
 };
