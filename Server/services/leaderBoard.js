@@ -11,9 +11,6 @@ var getFriendHighScore = function (req, user, done) {
 
     friendGraph.getFriends(null, user.id, function(friends) {
 
-    })
-    var friends = friendGraph.getFriends(user.id); //assuming the structure of friend works here
-
     /* This creates a in the form of:
         ret = ['James': 1239, 'Mary': 2939] */
     async.map (friends, drs.getPlayerScores, function(err, result){
@@ -25,6 +22,8 @@ var getFriendHighScore = function (req, user, done) {
         }
 
         done(result);
+    });
+
     });
 
 };
