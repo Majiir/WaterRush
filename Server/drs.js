@@ -31,6 +31,7 @@ exports.getItemCount = function(userId, itemId, callback) {
 
 exports.getScore = function(userId, levelId, callback) {
 	/* TODO: comment */
+	levelId = parseInt(levelId);
 	db.scores.findOne({userid: userId},function(err,docs){ if (err) { callback(err); } else { callback(null, docs.scores[levelId]); }});};
 
 exports.getPlayerScores = function(userId, callback) {
@@ -55,6 +56,8 @@ exports.getLives = function(userId, callback){
 
 exports.getLevelScores = function(levelId, callback){
 	/* TODO: comment */
+	levelId = parseInt(levelId);
+
 	db.scores.find({}).toArray(
 		function (err, docs) {
 			if (err) {

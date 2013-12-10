@@ -27,6 +27,7 @@ exports.start = function() {
 		},
 		levelProgress: function(userId, levelId, score) {
 			/* update userId’s high score on levelId with score */
+			levelId = parseInt(levelId);
 			transaction.push({"type": "level", "transaction": { "userid": userId, "levelid": levelId, "score": score}});
 			return this;
 		},
@@ -49,19 +50,19 @@ exports.start = function() {
 					// FIXME: add upsert: true
 					case "coin":
 						db.userInventory.update({ "userid": trans["transaction"]["userid"]}, 
-												{$inc: {"coins": trans["transaction"]["quantity"]}},
+												{$inc: {"coins": parseInt(trans["transaction"]["quantity"])}},
 												{upsert: true}
 						);
 						break;
 					case "lives":
 						db.userInventory.update({ "userid": trans["transaction"]["userid"]}, 
-												{$inc: {"lives": trans["transaction"]["quantity"]}},
+												{$inc: {"lives": parseInt(trans["transaction"]["quantity"])}},
 												{upsert: true}
 						);
 						break;
 					case "item":
 						db.userInventory.update({"userid": trans["transaction"]["userid"], "items.itemid": trans["transaction"]["itemid"]},
-												{$inc: {"items.$.quantity": trans["transaction"]["quantity"]} },
+												{$inc: {"items.$.quantity": parseInt(trans["transaction"]["quantity"])} },
 												{upsert: true}
 						);
 						break;
@@ -70,8 +71,8 @@ exports.start = function() {
 						//if (db.scores.find({"userid": trans["transaction"]["userid"], "levelid": trans["transaction"]["levelid"] }) < trans["transaction"]["score"])
 							db.scores.update(
 								{"userid": trans["transaction"]["userid"]}, 
-								{"scores.levelid": trans["transaction"]["levelid"], 
-									$set : { "scores.$.score": trans["transaction"]["score"]}},
+								{"scores.levelid": parseInt(trans["transaction"]["levelid"]), 
+									$set : { "scores.$.score": parseInt(trans["transaction"]["score"])}},
 								{upsert: true}
 							);
 						break;
