@@ -2,7 +2,7 @@
  * This is the entry point for the application. Should probably call Login or something
  */
 define([ 'knockout', 'modules/communication' ], function(ko, communication) {
-	function StoreViewModel() {
+	function CoinsViewModel() {
 		var self = this;
 
 		self.entries = ko.observableArray();
@@ -37,5 +37,5 @@ define([ 'knockout', 'modules/communication' ], function(ko, communication) {
 
 	}
 
-	ko.applyBindings(new StoreViewModel());
+	ko.applyBindings(new CoinsViewModel());
 });
