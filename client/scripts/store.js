@@ -25,6 +25,18 @@ define([ 'knockout', 'modules/communication' ], function(ko, communication) {
 
 		this.name = name;
 		this.price = price;
+
+		this.buy = function(){
+			communication.send({
+				'spendCoins': {
+					'spendCoins': {
+						item: self.name,
+						quantity: 1
+					}
+				}
+			}, function (result) {
+			});
+		};
 	}
 
 	ko.applyBindings(new StoreViewModel());

@@ -10,7 +10,7 @@ exports.endpoints = {
 		 drs.getCoins(user.id, function(err,result){
 		 	var coins = result;
 
-		 		var totalCost = totalPurchaseCost(req.item, req.quantity, coins);
+		 		var totalCost = totalPurchaseCost(req.item, parseInt(req.quantity), coins);
 		 		if(totalCost){
 		 			if (req.item == "lives"){
 		 				dtm.start().coins(user.id, -totalCost)
@@ -22,6 +22,8 @@ exports.endpoints = {
 		 						   .item(user.id, req.item, req.quantity)
 		 						   .commit(done);	
 		 			}
+		 		} else {
+		 			done();
 		 		}
 		 	});
 
@@ -34,10 +36,10 @@ exports.endpoints = {
  */
 function totalPurchaseCost(item, quantity, coins){
 	var storeItems = storeInfo.getItems();
-	var cost;
+	var cost = 0;
 	for (var storeItem in storeItems){
-		if (storeItem.name == item)
-			cost = storeItem.price;
+		if (storeItems[storeItem].name == item)
+			cost = cost + parseInt(storeItems[storeItem].price);
 	}
 	if (coins >= quantity * cost)
 		return quantity * cost;
