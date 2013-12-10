@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Newsfeed</title>
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-<link href="css/home.css" rel="stylesheet" media="screen" />
-    <script data-main="newsfeed" src="scripts/require.js"></script>
-    <script>
-        require.config( {
-            baseUrl : 'scripts',
-            paths : {
-                '$' : 'jquery-2.0.3',
-                '_' : 'underscore',
-                'Backbone' : 'backbone',
-                'root' : '../'
-            }
-        } );
-    </script>
+  <title>Newsfeed</title>
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/home.css" rel="stylesheet" media="screen" />
+	<script src="scripts/jquery-2.0.3.js"></script>
+  <script data-main="newsfeed" src="scripts/require.js"></script>
+  <script>
+      require.config( {
+          baseUrl : 'scripts',
+          paths : {
+              '$' : 'jquery-2.0.3',
+              '_' : 'underscore',
+              'Backbone' : 'backbone',
+              'root' : '../'
+          }
+      } );
+  </script>
 </head>
 <body>
 
