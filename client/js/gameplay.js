@@ -34,7 +34,7 @@ $(function() {
 									]
 					}
 	}*/
-			var list = result.inventory.getFakePowerups;
+			var list = result.inventory.getPowerups;
 			for (powerup in list) {
 				if ( list[powerup].name == "freeze"){				
 					freezePU.setCount(list[powerup].count);}
