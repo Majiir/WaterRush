@@ -89,7 +89,9 @@ exports.start = function() {
 				}
 			});
 
-			done();
+			if (done) {
+				done();
+			}
 		},
 	};
 };
