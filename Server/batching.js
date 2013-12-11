@@ -59,7 +59,7 @@ module.exports = function (services) {
 		function makeDone(endpoint, service, responses) {
 			return function(result) {
 
-					if (!result) {
+					if (typeof(result) == 'undefined') {
 						console.warn('batching: No result returned from ' + service + '/' + endpoint);
 						result = {};
 					}
