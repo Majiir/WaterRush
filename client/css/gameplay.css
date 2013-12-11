@@ -7,7 +7,7 @@
 
 #score{
 	margin-left: 5px;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 	background-color: #D3D3D3;
     border-radius: 10px;
     padding: 5px;
@@ -49,15 +49,15 @@
 	margin-top: 3px;
 }
 .game-container{
-	/*background-color:  	#FF0000;*/
+	
 background-image:url('http://wakpaper.com/large/Waterfalls_wallpapers_24.jpg');
 background-repeat:no-repeat;
-background-size: 110%;
+/*background-size: 110%;*/
         border-radius: 10px;
         padding: 10px;
         margin-left:  5px;
-        width: 65%;
-        height: 78%;
+        width: 992px;
+        height: 580px;
 }
 .panel-container{
 		float: left;

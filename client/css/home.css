@@ -7,25 +7,25 @@
 .hero-unit{
 	background-image: url('../images/riverMAP.jpg');
 	background-repeat: no-repeat;
-	background-size: 120%;
-	width: 100%;
-	height: 300px;
+	background-size: 110%;
+	width: 90%;
+	height: 50%;
 }
 
 .l1{
 	position:fixed;
-	top: 400px;
-	right: 260px;
+	top: 68%;
+	right: 14%;
 }
 
 .l2{
 	position:fixed;
-	top: 370px;
-	right: 840px;
+	top: 53%;
+	right: 60%;
 }
 
 .l3{
 	position:fixed;
-	top: 270px;
-	right: 600px;
+	top: 35%;
+	right: 40%;
 }
