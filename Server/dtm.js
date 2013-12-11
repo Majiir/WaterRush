@@ -62,7 +62,7 @@ exports.start = function() {
 						break;
 					case "item":
 						db.userInventory.update({"userid": trans["transaction"]["userid"], "items.itemid": trans["transaction"]["itemid"]},
-												{$inc: {"items.$.quantity": parseInt(trans["transaction"]["quantity"])} },
+												{$set: {"items.$.quantity": parseInt(trans["transaction"]["quantity"])} },
 												{upsert: true}
 						);
 						break;
