@@ -21,6 +21,10 @@ $(function() {
 	var boomPU = new BoomPowerUp(0);
 	var reQPU = new ReQPowerUp(0);
 
+	var initialFreeze = 0;
+	var initialBoom = 0;
+	var initialReq = 0;
+
 	require([ 'modules/communication' ], function(communication) {
 		communication.send({
 			'inventory': {
@@ -36,12 +40,18 @@ $(function() {
 	}*/
 			var list = result.inventory.getPowerups;
 			for (powerup in list) {
-				if ( list[powerup].name == "freeze"){				
-					freezePU.setCount(list[powerup].count);}
-				else if ( list[powerup].name == "boom"){				
-					boomPU.setCount(list[powerup].count);}
-				else if ( list[powerup].name == "req"){				
-					reQPU.setCount(list[powerup].count);}
+				if ( list[powerup].name == "freeze"){
+					initialFreeze = list[powerup].count;
+					freezePU.setCount(initialFreeze);
+				}
+				else if ( list[powerup].name == "boom"){
+					initialBoom = list[powerup].count;
+					boomPU.setCount(initialBoom);
+				}
+				else if ( list[powerup].name == "req"){
+					initialReq = list[powerup].count;
+					reQPU.setCount(initialReq);
+				}
 			}
 		});
 	});//*/
@@ -289,9 +299,9 @@ function endGame( success ) {
 		+ 'l=' + levelID
 		+ '&s=' + points
 		+ '&w=' + success
-		+ '&f=' + freezePU.getCount()
-		+ '&b=' + boomPU.getCount()
-		+ '&r=' + reQPU.getCount();
+		+ '&f=' + (freezePU.getCount() - initialFreeze)
+		+ '&b=' + (boomPU.getCount() - initialBoom)
+		+ '&r=' + (reQPU.getCount() - initialReq);
 }
 
 var updateId = -1;
