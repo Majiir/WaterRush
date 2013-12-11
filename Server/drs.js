@@ -68,3 +68,23 @@ exports.getLevelScores = function(levelId, callback){
 		}
 	);
 }
+
+exports.getGlobalScores = function(levelId, callback){
+	/* TODO: comment */
+	db.scores.find({}).toArray(
+		function (err, docs) {
+			if (err) {
+				callback(err);
+			}
+
+			var ret = {};
+			for (var i = 0; i < docs.length; i++){
+				ret[docs[i].userid] = 0;
+				docs[i].scores.forEach(function(elem){
+					ret[docs[i].userid] += elem.score;
+				}
+			}
+			callback(null, ret);
+		}
+	);
+}
