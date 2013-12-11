@@ -47,13 +47,7 @@ exports.endpoints = {
 
     'getMyHighScore': function(req, user, done) {
         drs.getLevelScores(req, function(err, result) {
-            var allHighScore = result[user.id];
-            if (allHighScore) {
-                allHighScore.sort(compare);
-                done(allHighScore.slice(0, 50));
-            } else {
-                done([]);
-            }
+            done(result[user.id].score || 0);
         });
     },
 
