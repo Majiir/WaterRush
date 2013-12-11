@@ -45,6 +45,10 @@ exports.endpoints = {
         });
     },
 
+    'getMyHighScore': function(req, user, done) {
+        done(10);
+    },
+
     'getFakeScores': function(req, user, done) {
         done({
             'Henry': 10,
