@@ -51,7 +51,7 @@ exports.endpoints = {
 
         var items = [];
         for ( var powerup in powerups){
-            items.push(powerup.name);
+            items.push(powerups[powerup].name);
         }
 
         async.map (items, function(item, callback){ drs.getItemCount(user.id, item, callback)}, function(err, result){
