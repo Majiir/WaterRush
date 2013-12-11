@@ -89,7 +89,7 @@ exports.getGlobalScores = function(levelId, callback){
 				ret[docs[i].userid] = 0;
 				docs[i].scores.forEach(function(elem){
 					ret[docs[i].userid] += elem.score;
-				}
+				});
 			};
 			callback(null, ret);
 		}
