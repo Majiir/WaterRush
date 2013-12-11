@@ -20,7 +20,7 @@
 	} );
 
 	$(function(){
-		require(['communication'], function(comm) {
+		require(['modules/communication'], function(comm) {
 			comm.send({
 				'leaderBoard': {
 					'getMyHighScore': localStorage.gameNum
