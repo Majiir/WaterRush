@@ -25,6 +25,9 @@ define([ 'knockout', 'modules/communication' ], function(ko, communication) {
 			for (friend in list) {
 				self.friendEntries.push(new EntryViewModel(friend, list[friend]));
 			}
+			self.friendEntries.sort(function(left, right) {
+				return left.score - right.score;
+			});
 		});	
 	}
 
