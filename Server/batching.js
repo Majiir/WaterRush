@@ -20,7 +20,7 @@ module.exports = function (services) {
 			for (service in obj) {
 				if (!services[service]) { continue; }
 				for (endpoint in obj[service]) {
-					if (!services[service][endpoint]) { continue; }
+					if (typeof(services[service][endpoint]) == 'undefined') { continue; }
 					if (!(service in responses) || !(endpoint in responses[service])) {
 						return;
 					}
