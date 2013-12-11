@@ -34,7 +34,7 @@ exports.endpoints = {
 	 var freezeQ;
 
 	 	if(levelId == 1){
-	 		freezeQ = req.freeze + 1;
+	 		freezeQ = req.freeze;
 	 	}
 	 	else{
 	 		freezeQ = req.freeze;
@@ -43,7 +43,7 @@ exports.endpoints = {
 	 var boomQ;
 
 		if(levelId == 2){
-	 		boomQ = req.boom + 1;
+	 		boomQ = req.boom;
 	 	}
 	 	else{
 	 		boomQ = req.boom;
@@ -52,7 +52,7 @@ exports.endpoints = {
 	 var reQ;
 
 	 	if(levelId == 3){
-	 		reQ = req.reQ + 1;
+	 		reQ = req.reQ;
 	 	}
 	 	else{
 	 		reQ = req.reQ;
