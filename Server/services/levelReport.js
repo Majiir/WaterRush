@@ -7,7 +7,7 @@ calculateCoinReward = function(score, levelId){
 };
 
 exports.endpoints = {
-	'addLevelProgress': function (req, user) {
+	'addLevelProgress': function (req, user, done) {
 	/**
 	 * [
 		{"user" : "xxxxx", "levelId" : "5", "score" : "1000","freeze" : "10", 
@@ -64,6 +64,6 @@ exports.endpoints = {
 		       .item(userId,"req",reQ)
 		       .lives(userId,lives)
 		       .coins(userId,coins)
-		       .commit();
+		       .commit(done);
 	}
 };
