@@ -30,7 +30,7 @@
    
     <tbody data-bind="foreach: entries">
         <tr>
-            <td data-bind="text: $index"></td>
+            <td data-bind="text: ($index() + 1)"></td>
             <td data-bind="text: notification"></td>
         </tr>
         

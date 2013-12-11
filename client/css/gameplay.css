@@ -36,11 +36,28 @@
 .button-badge{
 	margin-top: 3px;
 }
-
+.panel-container{
+		float: left;
+		background-color: #D3D3D3;
+        border-radius: 10px;
+        padding: 10px;
+        padding-top: 303px;
+        margin-left: 5px;
+        margin-top: -259px;
+     
+}
 .control-panel{
 	float: left;
 	width: 100px;
-	margin-left: 5px;
+	
+}
+.quit-panel{
+	float: left;
+	width: 100px;
+	margin-left: -100px;
+	margin-top: -292px;
+
+
 }
 
 .star:before {
