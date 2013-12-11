@@ -24,7 +24,11 @@ exports.getItemCount = function(userId, itemId, callback) {
 		if (err) { 
 			callback(err);
 		} else {
-			callback(null, docs.items[itemId].quantity);
+			var items = {};
+			for (var item in docs.items) {
+				items[docs.items[item].itemid] = docs.items[item].quantity;
+			}
+			callback(null, items[itemId].quantity);
 		}
 	});
 };
