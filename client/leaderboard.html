@@ -23,13 +23,12 @@
 	<h1>Leaderboard</h1>
 
 
-	<!-- TODO: Change angular over to knockout here -->
-    <div class="btn-group" style="margin-bottom: 10px;">
-        <button type="button" class="btn btn-default" data-bind="click: showGlobal(true)">Global</button> 
-        <button type="button" class="btn btn-default" data-bind="click: showGlobal(false)">Friends</button> 
-    </div>
+    <!--<div class="btn-group" style="margin-bottom: 10px;">
+        <button type="button" class="btn btn-default" data-bind="click: showGlobal(false)">Global</button> 
+        <button type="button" class="btn btn-default" data-bind="click: showGlobal(true)">Friends</button> 
+    </div>-->
 
-    <table class="table table-hover table-bordered" data-bind="visible: showGlobal()" style="table-layout: fixed;">
+    <table class="table table-hover table-bordered" data-bind="visible: !showGlobal()" style="table-layout: fixed;">
         <thead>
             <tr>
                 <th style="width: 10px;">#</th>
@@ -51,7 +50,7 @@
         </tbody>
     </table>
     
-    <table class="table table-hover table-bordered" data-bind="visible: !showGlobal()" style="table-layout: fixed;">
+    <table class="table table-hover table-bordered" data-bind="visible: showGlobal()" style="table-layout: fixed;">
         <thead>
             <tr>
                 <th style="width: 10px;">#</th>
