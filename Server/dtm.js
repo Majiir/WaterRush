@@ -91,6 +91,9 @@ exports.start = function() {
 
 			if (done) {
 				done();
+			} else {
+				console.log('dtm: no callback given to commit! transaction:');
+				console.log(transaction);
 			}
 		},
 	};
