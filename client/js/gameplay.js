@@ -6,26 +6,22 @@ $(function() {
 	CONNECTIONS = initConnections();
 
 	//level dependent
-	var baseScore = parseInt($('#parameters').attr('baseScore'));
-	var scoreMultiplier = parseInt($('#parameters').attr('scoreMultiplier'));
-	var totalSquares = parseInt($('#parameters').attr('totalSquares'));
-	var flowSpeed = parseFloat($('#parameters').attr('flowSpeed'));
-	var startPipeId = parseInt($('#parameters').attr('startPipeId'));
-
 	var params = $('#parameters'),
 			baseScore = parseInt(params.attr('baseScore') ),
 			scoreMultiplier = parseInt(params.attr('scoreMultiplier') ),
 			totalSquares = parseInt(params.attr('totalSquares') ),
-			levelID = parseInt( params.attr( 'level' ) );
+			flowSpeed = parseFloat( params.attr('flowSpeed') ),
+			levelID = parseInt( params.attr( 'level' ) ),
+			startPipeId = parseInt( params.attr('startPipeId') );
 
 	//not level dependent
 	var tilesPlaced = 0;
 	var points = baseScore*scoreMultiplier;
 	var freezePU = new FreezePowerUp(0);
-	var reQPU = new ReQPowerUp(0);
 	var boomPU = new BoomPowerUp(0);
+	var reQPU = new ReQPowerUp(0);
 
-	require([ 'modules/communication_nojquery'], function(communication) {	
+	require([ 'modules/communication' ], function(communication) {
 		communication.send({
 			'inventory': {
 				'getPowerups': {}
@@ -279,14 +275,23 @@ function checkWinState() {
 
 function victory() {
 	stop();
-	alert('You win!. You have got ' + points + ' points');
-	window.location.pathname = 'postgame.html?score=' + points + '&win=true';
+	endGame( true );
 }
 
 function defeat() {
 	stop();
+	endGame( false );
+}
+
+function endGame( success ) {
 	points = Math.max(0, points);
-	window.location.pathname = 'postgame.html?score=' + points + '&win=false';
+	window.location.pathname = 'postgame.html?'
+		+ 'l=' + levelID
+		+ '&s=' + points
+		+ '&w=' + success
+		+ '&f=' + freezePU.getCount()
+		+ '&b=' + boomPU.getCount()
+		+ '&r=' + reQPU.getCount();
 }
 
 var updateId = -1;

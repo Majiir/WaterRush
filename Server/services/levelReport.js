@@ -1,8 +1,13 @@
 var drs = require('../drs.js');
 var dtm = require('../dtm.js');
 
+calculateCoinReward = function(score, levelId){
+	var reward = 5;
+	return reward;
+};
+
 exports.endpoints = {
-	'addLevelProgress': function (req, user, done) {
+	'addLevelProgress': function (req, user) {
 	/**
 	 * [
 		{"user" : "xxxxx", "levelId" : "5", "score" : "1000","freeze" : "10", 
@@ -53,19 +58,12 @@ exports.endpoints = {
 	 		reQ = req.reQ;
 	 	}
 
-
 	dtm.start().levelProgress(userId,levelId,score)
 		       .item(userId,"freeze",freezeQ)
 		       .item(userId,"boom",boomQ)
 		       .item(userId,"req",reQ)
 		       .lives(userId,lives)
 		       .coins(userId,coins)
-		       .commit(done);
-	},
+		       .commit();
+	}
 };
-
-exports.calculateCoinReward = function(score, levelId){
-	var reward = 5;
-	return reward;
-};
-

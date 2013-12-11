@@ -1,10 +1,14 @@
-define( [ 'modules/communication', '$' ], function ( comm ) {
+define( [ 'modules/communication' ], function ( comm ) {
 	$( function () {
-		var location = window.location,
-			previous = document.referrer,
-			params = location.search,
-			score = JSON.parse( params.substring( params.indexOf( '=' ) + 1, params.indexOf( '&' ) ) ),
-			success = JSON.parse( params.substring( params.lastIndexOf( '=' ) + 1 ) ),
+		var previous = document.referrer,
+			search = window.location.search,
+			params = search.substring( 1 ).split( '&' ),
+			level = JSON.parse( params[ 0 ].substring( params[ 0 ].indexOf( '=' ) + 1 ) ),
+			score = JSON.parse( params[ 1 ].substring( params[ 1 ].indexOf( '=' ) + 1 ) ),
+			success = JSON.parse( params[ 2 ].substring( params[ 2 ].indexOf( '=' ) + 1 ) ),
+			numFreeze = JSON.parse( params[ 3 ].substring( params[ 3 ].indexOf( '=' ) + 1 ) ),
+			numBoom = JSON.parse( params[ 4 ].substring( params[ 4 ].indexOf( '=' ) + 1 ) ),
+			numReQ = JSON.parse( params[ 5 ].substring( params[ 5 ].indexOf( '=' ) + 1 ) ),
 			playNext = $( '#playNext' ),
 			replayLevel = $( '#replayLevel' ),
 			home = $( '#home' ),
@@ -22,7 +26,6 @@ define( [ 'modules/communication', '$' ], function ( comm ) {
 		}
 
 		playNext.on( 'click', function () {
-			var level = previous.substr( previous.lastIndexOf( '.' ) - 1, 1 );
 			window.location = previous.substr( 0 , previous.lastIndexOf( '.' ) - 1 ) + ( ++level % 4 ) + '.html';
 		} );
 
@@ -37,6 +40,21 @@ define( [ 'modules/communication', '$' ], function ( comm ) {
 		powerUP.on( 'click', function () {
 			window.open('store.html', '_self', false);
 		} );
+
+		comm.send(
+			{
+				levelReport : {
+					addLevelProgress : {
+						levelId : level,
+						score : score,
+						win : success,
+						freeze : numFreeze,
+						boom : numBoom,
+						reQ : numReQ
+					}
+				}
+			},
+			function ( res ) {} );
 	} );
 
 	return {};
